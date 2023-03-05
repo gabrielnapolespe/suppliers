@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Proveedores{% endblock %}
+
+{% block body %}
+
+//CREACION DE PROVEEDORES
+
+<div class="container" id="formulario">
+    <h3>Crea un usuario</h3>
+    {{form_start(form)}}
+    <div class="row">
+        <div class="col-lg-12 my-2" id="campo">
+       {{form_label(form.name, 'Nombre')}}
+       {{form_widget(form.name, {attr:{'placeholder':'Escribe un nombre...'}})}}
+        </div>
+        <div class="col-lg-12 my-2" id="campo">
+            {{form_label(form.email, 'Email')}}
+            {{form_widget(form.email, {attr:{'placeholder':'Escribe un email...'}})}}
+        </div>
+        <div class="col-lg-12 my-2" id="campo">
+            {{form_label(form.phoneNumber, 'Número de teléfono')}}
+            {{form_widget(form.phoneNumber, {attr:{'placeholder':'Escribe un teléfono...'}})}}
+        </div>
+        <div class="col-lg-12 my-2" id="campo">
+            {{form_label(form.type, 'Tipo')}}
+            {{form_widget(form.type)}}
+        </div>
+        <div class="col-lg-12 my-2" id="campo">
+            {{form_label(form.active, 'Activo')}}
+            {{form_widget(form.active)}}
+        </div>
+    </div>
+    {{form_end(form)}}
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Proveedores{% endblock %}
+
+{% block body %}
+
+//LISTADO DE PROVEEDORES
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12" id="lista">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Correo electrònico</th>
+                            <th>Tipo de proveedor</th>
+                            <th>Actividad</th>
+                            <th>Fecha de creación</th>
+                            <th>Última actualización</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%  for supplier in suppliers%}
+                        <tr>
+                            <td>{{supplier.name}}</td>
+                            <td>{{supplier.email}}</td>
+                            <td>{{supplier.type}}</td>
+                            <td>
+                                {% if supplier.active == 1 %}
+                                <img src="{{ asset('img/tick.png')}}" id="img"></a>
+                                {% endif %}
+                                {% if supplier.active == 0 %}
+                                <img src="{{ asset('img/cross.png')}}" id="img"></a>
+                                {% endif %}
+                        </td>   
+                            <td id="fecha">{{supplier.date_create | date()}}</td>
+                            <td id="fecha">{{supplier.date_update | date()}}</td>
+                            <td><a href="{{ path('update_suppliers', {'id':supplier.id})}}" alt="Editar" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
+                            <td><a href="{{ path('remove_suppliers', {'id':supplier.id})}}" alt="Eliminar" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+                        </tr>
+                        {%  endfor   %}
+                    </tbody>  
+                </table>
+                <a href="{{ path('new_suppliers')}}" id="new" role="button" class="btn btn-success"> <i class="fa fa-plus"></i></a>
+                </div> 
+            </div>
+        </div>
+
+
+{% endblock %}
